@@ -1,8 +1,8 @@
 DL-for-recycle
 ==============
-In the era of mass production and mass consumption, waste disposal has become an important national issue. With this trend, the social and economic importance of ***garbage collection and reusing*** is increasing. An alternative is to allow the machine to classify automatically once the user discharge the waste regardless of the material.
+In the era of mass production and mass consumption, trash disposal has become an important national issue. With this trend, the social and economic importance of ***trash collection and reusing*** is increasing. An alternative is to allow the machine to classify automatically once the user discharge the trash regardless of the material.
 
-Using two methods for creating an ***effective trash classification model*** using only a small number of annotated waste images(2527).
+Using two methods for creating an ***effective trash classification model*** using only a small number of annotated trash images(2527).
 
 ***1) Transfer learning: Using ImageNet pre-trained model***  
 ***2) Effective feature learning with attention module***
