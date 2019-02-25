@@ -1,5 +1,5 @@
-DL-for-recycle
-==============
+Recyclable Trash Classification
+================================
 In the era of mass production and mass consumption, trash disposal has become an important national issue. With this trend, the social and economic importance of ***trash collection and reusing*** is increasing. An alternative is to allow the machine to classify automatically once the user discharge the trash regardless of the material.
 
 Using two methods for creating an ***effective trash classification model*** using only a small number of annotated trash images(2527).
