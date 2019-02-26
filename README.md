@@ -35,12 +35,23 @@ Experiment
 
 Attention Module
 ----------------
-
 ![Alt text](/data/images/Attention.jpg)
 
-* Attention Visualization
+* Attention Module
+  - **Attention mechanism** learns parameters with a high weight for important features and a low weight for unnecessary features.  
+  𝒙′′ = (𝒙,𝜽) ∗ 𝑨(𝒙′, ∅), 𝒘𝒉𝒆𝒓𝒆 𝟎 ≤ 𝑨(𝒙′, ∅) ≤ 𝟏.  
+  𝒙: Input Feature, 𝒙′: CNN or later features, 𝒙′′: Output Feature,  
+  θ, ∅: learable parameters, A: Attention operation
+  
+  - When looking at the network from a **forward perspective**, the features are refined through attention modules.
+  (𝒅(𝒙, 𝜽)𝑨(𝒙′, ∅))/𝒅𝜽 = (𝒅(𝒙, 𝜽))/𝒅𝜽 ∗ 𝑨(𝒙′, ∅), 𝒘𝒉𝒆𝒓𝒆 𝟎 ≤ 𝑨(𝒙′, ∅) ≤ 𝟏.  
+  - From a **backward perspective**, the greater the attention value, the greater the gradient value, so effective learning is achieved.
 
-![Alt text](/data/images/Attention%20Visualization.jpg)
+![Alt text](/data/images/Attention%20Visualization.jpg
+
+* Attention Visualization
+  - **Visualization comparison** of feature map extracted after the last convolution block.
+  - **ResNet18 + BotoxNet** vs. ResNet18(baseline)
 
 Ablation Study
 --------------
