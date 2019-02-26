@@ -47,11 +47,13 @@ Attention Module
   (𝒅(𝒙, 𝜽)𝑨(𝒙′, ∅))/𝒅𝜽 = (𝒅(𝒙, 𝜽))/𝒅𝜽 ∗ 𝑨(𝒙′, ∅), 𝒘𝒉𝒆𝒓𝒆 𝟎 ≤ 𝑨(𝒙′, ∅) ≤ 𝟏.  
   - From a **backward perspective**, the greater the attention value, the greater the gradient value, so effective learning is achieved.
 
-![Alt text](/data/images/Attention%20Visualization.jpg
+![Alt text](/data/images/Attention%20Visualization.jpg)
 
 * Attention Visualization
   - **Visualization comparison** of feature map extracted after the last convolution block.
   - **ResNet18 + BotoxNet** vs. ResNet18(baseline)
+  - While **ResNet18 + BotoxNet** successfully classified, ResNet18 failed classification.
+  - Feature map shows that when Attention module is inserted, it attend more precisely on the **object extent**.
 
 Ablation Study
 --------------
@@ -95,6 +97,16 @@ Ablation Study
 |          Mul         |    91.647   |     11.24     |
 |          Max         |    92.575   |     11.24     |
 |          Sum         |    **93.039**   |     11.24     |
+
+Result
+-------
+While proposing deep-learning model which is specialized in trash classification, there was two difficult problems faced experimentally:
+
+*1) Insufficiency of data set*  
+*2) The absence of effective feature learning methods*  
+was solved as **transfer learning and attention mechanism.**
+
+The methodology proposed through quantitative and qualitative assessments was experimentally significant. Because the proposed method exhibits significant performance improvements without significantly increasing the number of parameters, it is expected that the experimental value is also high for other applications.
 
 Reference
 ----------
