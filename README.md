@@ -43,7 +43,7 @@ Attention Module
   𝒙: Input Feature, 𝒙′: CNN or later features, 𝒙′′: Output Feature,  
   θ, ∅: learable parameters, A: Attention operation
   
-  - When looking at the network from a **forward perspective**, the features are refined through attention modules.
+  - When looking at the network from a **forward perspective**, the features are refined through attention modules.  
   (𝒅(𝒙, 𝜽)𝑨(𝒙′, ∅))/𝒅𝜽 = (𝒅(𝒙, 𝜽))/𝒅𝜽 ∗ 𝑨(𝒙′, ∅), 𝒘𝒉𝒆𝒓𝒆 𝟎 ≤ 𝑨(𝒙′, ∅) ≤ 𝟏.  
   - From a **backward perspective**, the greater the attention value, the greater the gradient value, so effective learning is achieved.
 
