@@ -35,7 +35,7 @@ Experiment
 
 Attention Module
 ----------------
-![Alt text](/data/images/Attention.jpg)
+![Alt text](/images/Attention.jpg)
 
 * Attention Module
   - **Attention mechanism** learns parameters with a high weight for important features and a low weight for unnecessary features.  
@@ -47,7 +47,7 @@ Attention Module
   (𝒅(𝒙, 𝜽)𝑨(𝒙′, ∅))/𝒅𝜽 = (𝒅(𝒙, 𝜽))/𝒅𝜽 ∗ 𝑨(𝒙′, ∅), 𝒘𝒉𝒆𝒓𝒆 𝟎 ≤ 𝑨(𝒙′, ∅) ≤ 𝟏.  
   - From a **backward perspective**, the greater the attention value, the greater the gradient value, so effective learning is achieved.
 
-![Alt text](/data/images/Attention%20Visualization.jpg)
+![Alt text](/images/Attention%20Visualization.jpg)
 
 * Attention Visualization
   - **Visualization comparison** of feature map extracted after the last convolution block.
