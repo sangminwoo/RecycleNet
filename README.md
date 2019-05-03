@@ -10,7 +10,7 @@ Using two methods for creating an ***effective trash classification model*** usi
 To demonstrate that the proposed methodologies were effective, a large number of ablation studies were conducted and were more effective than state-of-the-art attention modules.
 
 -  Baseline Network: ResNet
--  Attention Module: BotoxNet
+-  Attention Module: RecycleNet
 
 Dataset(TrashNet[1]: https://github.com/garythung/trashnet)
 -----------------------------------------------------------
@@ -51,8 +51,8 @@ Attention Module
 
 * Attention Visualization
   - **Visualization comparison** of feature map extracted after the last convolution block.
-  - **ResNet18 + BotoxNet** vs. ResNet18(baseline)
-  - While **ResNet18 + BotoxNet** successfully classified, ResNet18 failed classification.
+  - **ResNet18 + Ours** vs. ResNet18(baseline)
+  - While **ResNet18 + Ours** successfully classified, ResNet18 failed classification.
   - Feature map shows that when Attention module is inserted, it attend more precisely on the **object extent**.
 
 Ablation Study
@@ -69,7 +69,7 @@ Ablation Study
 | Pre-trained ResNet50 |   **93.735**    |      23.52    |
 
 
-* Attention Module(SENet vs. CBAM vs. BotoxNet)
+* Attention Module(SENet vs. CBAM vs. Ours)
 
 |        Method        | Accuracy(%) | Parameters(M) |
 |----------------------|-------------|---------------|
@@ -79,9 +79,9 @@ Ablation Study
 |  ResNet18 + CBAM[3]  |   79.814    |      11.27    |
 |  ResNet34 + CBAM[3]  |   81.439    |      21.45    |
 |  ResNet50 + CBAM[3]  |   82.135    |      26.05    |
-|  ResNet18 + Botox    |   **93.039**    |      11.24    |
-|  ResNet34 + Botox    |   **93.968**    |      21.35    |
-|  ResNet50 + Botox    |   **94.2**      |      24.15    |
+|  ResNet18 + Ours     |   **93.039**    |      11.24    |
+|  ResNet34 + Ours     |   **93.968**    |      21.35    |
+|  ResNet50 + Ours     |   **94.2**      |      24.15    |
 
 
 * Channel Attention & Spatial Attention
