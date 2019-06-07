@@ -1,0 +1,7 @@
+GLASS = 0
+METAL = 1
+PAPER = 2
+PLASTIC = 3
+
+DIM1 = 384
+DIM2 = 512
