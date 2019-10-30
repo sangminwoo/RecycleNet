@@ -1,4 +1,4 @@
-Recyclable Trash Classification
+RecycleNet
 ================================
 In the era of mass production and mass consumption, trash disposal has become an important national issue. With this trend, the social and economic importance of ***trash collection and reusing*** is increasing. An alternative is to allow the machine to classify automatically once the user discharge the trash regardless of the material.
 
@@ -9,11 +9,21 @@ Using two methods for creating an ***effective trash classification model*** usi
 
 To demonstrate that the proposed methodologies were effective, a large number of ablation studies were conducted and were more effective than state-of-the-art attention modules.
 
--  Baseline Network: ResNet
+-  Backbone Network: ResNet
 -  Attention Module: RecycleNet
 
-Dataset(TrashNet[1]: https://github.com/garythung/trashnet)
------------------------------------------------------------
+Requirements
+-----------
+Install all the python dependencies using pip:
+```
+$ git clone https://github.com/sangminwoo/RecycleNet.git
+$ cd RecycleNet
+$ pip install -r requirements.txt
+```
+Pytorch is not inside. Please go to [official website](https://pytorch.org/get-started/locally/).
+
+Data Preparation(TrashNet[1]: https://github.com/garythung/trashnet)
+--------------------------------------------------------------------
 * Total: 2527 (contains 6 classes)
   -  Glass 501
   -  Paper 594
@@ -25,13 +35,52 @@ Dataset(TrashNet[1]: https://github.com/garythung/trashnet)
 * Train/Val/Test set: 70/13/17
 * Data Augmentation
 
+* :warning: You may use *additional_dataset.zip* as another version of dataset. But if you use both of them on training phase, it will increase intra-class variance thus will leads to decrease of accuracy. Maybe you can try to use it for just testing true-generalizability on totally different dataset.(In terms of real world problem, trashes have high intra-class variance so it's very important!)
+
+Training
+---------
+Without pre-train(Training from scratch)
+```
+$ python main.py --gpu $GPUNUM --arch $ARCHITECTURE --no_pretrain
+```
+
+Without Attention Module
+```
+$ python main.py --gpu $GPUNUM --arch $ARCHITECTURE
+```
+
+With Attention Module
+```
+$ python main.py --gpu $GPUNUM --arch $ARCHITECTURE --use_att
+```
+$GPUNUM: 0; 0,1; 0,3; 0,1,2; whatever
+$ARCHITECTURE: resnet18_base(default), resnet34_base, resnet52_base, resnet101_base, resnet152_base
+
+You can find more configurations in *main.py*.
+
+Inference using webcam
+
+Evaluation
+----------
+```
+$ python main.py --gpu $GPUNUM --resume save/model_best.pth.tar --use_att --e
+```
+$resume: save/model_best.pth.tar(default) (If you have changed save path, you should change resume path as well.)
+$e (or evaluate): set evaluation mode
+
+Webcam Inference
+----------------
+```
+$ python webcam.py --resume save/model_best_pth.tar
+```
+
 Configuration
 -------------
 * Loss Function: Cross Entropy Loss
 * Optimizer: SGD
 * Initial Learning Rate: 2e-4
-* 50 epoch
-* For every 20 epoch, learning rate = learning rate * 1/10
+* epochs: 100
+* For every 40 epochs, learning rate = learning rate * 1/10
 
 Attention Module
 ----------------
@@ -59,7 +108,7 @@ Ablation Study
 --------------
 * Non Pre-trained Model vs. Pre-trained Model (Transfer Learning)
 
-|        Method        | Accuracy(%) | Parameters(M) |
+|        Method        | Accuracy@1  | Parameters(M) |
 |----------------------|-------------|---------------|
 |       ResNet18       |   70.302    |      11.18    |
 |       ResNet34       |   64.965    |      21.29    |
@@ -71,7 +120,7 @@ Ablation Study
 
 * Attention Module(SENet vs. CBAM vs. Ours)
 
-|        Method        | Accuracy(%) | Parameters(M) |
+|        Method        | Accuracy@1  | Parameters(M) |
 |----------------------|-------------|---------------|
 |  ResNet18 + SE[2]    |   87.703    |      11.27    |
 |  ResNet34 + SE[2]    |   88.863    |      21.45    |
@@ -86,13 +135,13 @@ Ablation Study
 
 * Channel Attention & Spatial Attention
 
-|  Network ablation  | Accuracy(%) | Parameters(M) |
+|  Network ablation  | Accuracy@1  | Parameters(M) |
 |--------------------|-------------|---------------|
 |      ResNet18      |    90.023   |     11.18     |
 |    ResNet18 + s    |    92.807   |     11.20     |
 |  ResNet18 + s + c  |    **93.039**   |     11.24     |
 
-| Combination ablation | Accuracy(%) | Parameters(M) |
+| Combination ablation | Accuracy@1  | Parameters(M) |
 |----------------------|-------------|---------------|
 |          Mul         |    91.647   |     11.24     |
 |          Max         |    92.575   |     11.24     |
@@ -104,7 +153,7 @@ While proposing deep-learning model which is specialized in trash classification
 
 *1) Insufficiency of data set*  
 *2) The absence of effective feature learning methods*  
-was solved as **transfer learning and attention mechanism.**
+was solved by **transfer learning and attention mechanism.**
 
 The methodology proposed through quantitative and qualitative assessments was experimentally significant. Because the proposed method exhibits significant performance improvements without significantly increasing the number of parameters, it is expected that the experimental value is also high for other applications.
 
@@ -115,3 +164,7 @@ Reference
 | 1 | TrashNet  | https://github.com/garythung/trashnet        |
 | 2 | SENet     | https://github.com/hujie-frank/SENet         |
 | 3 | CBAM      | https://github.com/Jongchan/attention-module |
+
+Acknowledgement
+---------------
+We appreciate much the dataset [TrashNet](https://github.com/garythung/trashnet) and the well organized code [CBAM](https://github.com/Jongchan/attention-module). Our codebase is mostly built based on them.
