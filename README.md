@@ -25,8 +25,8 @@ Dataset(TrashNet[1]: https://github.com/garythung/trashnet)
 * Train/Val/Test set: 70/13/17
 * Data Augmentation
 
-Experiment
-----------
+Configuration
+-------------
 * Loss Function: Cross Entropy Loss
 * Optimizer: SGD
 * Initial Learning Rate: 2e-4
