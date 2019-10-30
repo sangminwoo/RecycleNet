@@ -147,8 +147,8 @@ Ablation Study
 |          Max         |    92.575   |     11.24     |
 |          Sum         |    **93.039**   |     11.24     |
 
-Result
--------
+Conclusion
+----------
 While proposing deep-learning model which is specialized in trash classification, there was two difficult problems faced experimentally:
 
 *1) Insufficiency of data set*  

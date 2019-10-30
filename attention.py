@@ -15,7 +15,7 @@ class ChannelGate(nn.Module):
     def forward(self, x):
         avg_pool = F.avg_pool2d( x, (x.size(2), x.size(3)), stride=(x.size(2), x.size(3))).squeeze()
         channel_att_raw = self.mlp( avg_pool )
-        channel_att = F.sigmoid( channel_att_raw ).unsqueeze(2).unsqueeze(3)
+        channel_att = torch.sigmoid( channel_att_raw ).unsqueeze(2).unsqueeze(3)
         return x * channel_att
 
 class SpatialGate(nn.Module):
