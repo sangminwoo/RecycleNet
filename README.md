@@ -53,9 +53,9 @@ With Attention Module
 ```
 $ python main.py --gpu $GPUNUM --arch $ARCHITECTURE --use_att --att_mode $ATT
 ```
-$GPUNUM: 0; 0,1; 0,3; 0,1,2; whatever  
-$ARCHITECTURE: resnet18_base(default), resnet34_base, resnet52_base, resnet101_base, resnet152_base  
-$ATT: ours, cbam, se  
+**$GPUNUM**: 0; 0,1; 0,3; 0,1,2; whatever  
+**$ARCHITECTURE**: resnet18_base(default), resnet34_base, resnet52_base, resnet101_base, resnet152_base  
+**$ATT**: ours, cbam, se  
 
 You can find more configurations in *main.py*.
 
@@ -64,8 +64,8 @@ Evaluation
 ```
 $ python main.py --gpu $GPUNUM --resume save/model_best.pth.tar --use_att --e
 ```
-$resume: save/model_best.pth.tar(default) (If you have changed save path, you should change resume path as well.)
-$e (or evaluate): set evaluation mode
+**$resume**: save/model_best.pth.tar(default) (If you have changed save path, you should change resume path as well.)  
+**$e** (or evaluate): set evaluation mode
 
 Webcam Inference
 ----------------
