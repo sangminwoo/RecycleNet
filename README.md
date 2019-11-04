@@ -20,7 +20,7 @@ $ git clone https://github.com/sangminwoo/RecycleNet.git
 $ cd RecycleNet
 $ pip install -r requirements.txt
 ```
-Pytorch is not inside. Please go to [official website](https://pytorch.org/get-started/locally/).
+* PyTorch is not inside. Please go to [official website](https://pytorch.org/get-started/locally/).
 
 Data Preparation(TrashNet[1]: https://github.com/garythung/trashnet)
 --------------------------------------------------------------------
@@ -38,13 +38,13 @@ Data Preparation(TrashNet[1]: https://github.com/garythung/trashnet)
 * :warning: You may use *additional_dataset.zip* as another version of dataset. But if you use both of them on training phase, it will increase intra-class variance thus will leads to decrease of accuracy. Maybe you can try to use it for just testing true-generalizability on totally different dataset.(In terms of real world problem, trashes have high intra-class variance so it's very important!)
 
 Data Augmentation(Albumentations[4])
-------------------
+------------------------------------
 ```
 $ python augmentation.py --root_dir $ROOT --save_dir $SAVE --probability $PROB
 ```
-$ROOT: 'dataset-resized/' (default)
-$SAVE: 'augmented/' (default)
-$PROB: low(default), mid, high (probability of applying the transform)
+$ROOT: 'dataset-resized/' (default)  
+$SAVE: 'augmented/' (default)  
+$PROB: low(default), mid, high (probability of applying the transform)  
 
 Training
 ---------
@@ -60,22 +60,26 @@ $ python main.py --gpu $GPUNUM --arch $ARCHITECTURE
 
 With Attention Module
 ```
-$ python main.py --gpu $GPUNUM --arch $ARCHITECTURE --use_att
+$ python main.py --gpu $GPUNUM --arch $ARCHITECTURE --use_att --att_mode $ATT
 ```
-$GPUNUM: 0; 0,1; 0,3; 0,1,2; whatever
-$ARCHITECTURE: resnet18_base(default), resnet34_base, resnet52_base, resnet101_base, resnet152_base
+**$GPUNUM**: 0; 0,1; 0,3; 0,1,2; whatever  
+**$ARCHITECTURE**: resnet18_base(default), resnet34_base, resnet52_base, resnet101_base, resnet152_base  
+**$ATT**: ours(default), cbam, se  
 
 You can find more configurations in *main.py*.
-
-Inference using webcam
 
 Evaluation
 ----------
 ```
-$ python main.py --gpu $GPUNUM --resume save/model_best.pth.tar --use_att --e
+$ python main.py --gpu $GPUNUM --resume save/model_best.pth.tar --use_att -e
 ```
+<<<<<<< HEAD
 $resume: 'save/model_best.pth.tar' (default) (If you have changed save path, you should change resume path as well.)
 $e (or evaluate): set evaluation mode
+=======
+**$resume**: save/model_best.pth.tar(default) (If you have changed save path, you should change resume path as well.)  
+**$e** (or evaluate): set evaluation mode
+>>>>>>> a2a254a54f644cec6b00e191c6d42ccef2eca6c0
 
 Webcam Inference
 ----------------
