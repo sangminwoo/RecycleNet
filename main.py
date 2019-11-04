@@ -18,9 +18,9 @@ import resnet
 from utils import indexes_to_one_hot
 
 def get_arguments():
-    parser = argparse.ArgumentParser(description="TrashNet")
-    parser.add_argument("--b", type=int, default=16)
-    parser.add_argument("--gpu", type=str, help="0; 0,1; 0,3; etc", required=True)
+    parser = argparse.ArgumentParser(description='RecycleNet')
+    parser.add_argument('--b', '--batch', type=int, default=16)
+    parser.add_argument('--gpu', type=str, help='0; 0,1; 0,3; etc', required=True)
     parser.add_argument('--root_dir', type=str, default='data/')
     parser.add_argument('--save_dir', type=str, default='save/')
     parser.add_argument('--resume', type=str, default=None)

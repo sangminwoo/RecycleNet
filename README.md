@@ -37,6 +37,15 @@ Data Preparation(TrashNet[1]: https://github.com/garythung/trashnet)
 
 * :warning: You may use *additional_dataset.zip* as another version of dataset. But if you use both of them on training phase, it will increase intra-class variance thus will leads to decrease of accuracy. Maybe you can try to use it for just testing true-generalizability on totally different dataset.(In terms of real world problem, trashes have high intra-class variance so it's very important!)
 
+Data Augmentation(Albumentations[4])
+------------------
+```
+$ python augmentation.py --root_dir $ROOT --save_dir $SAVE --probability $PROB
+```
+$ROOT: 'dataset-resized/' (default)
+$SAVE: 'augmented/' (default)
+$PROB: low(default), mid, high (probability of applying the transform)
+
 Training
 ---------
 Without pre-train(Training from scratch)
@@ -65,7 +74,7 @@ Evaluation
 ```
 $ python main.py --gpu $GPUNUM --resume save/model_best.pth.tar --use_att --e
 ```
-$resume: save/model_best.pth.tar(default) (If you have changed save path, you should change resume path as well.)
+$resume: 'save/model_best.pth.tar' (default) (If you have changed save path, you should change resume path as well.)
 $e (or evaluate): set evaluation mode
 
 Webcam Inference
@@ -159,11 +168,12 @@ The methodology proposed through quantitative and qualitative assessments was ex
 
 Reference
 ----------
-| # | Reference |                    Link                      |
-|---|-----------|----------------------------------------------|
-| 1 | TrashNet  | https://github.com/garythung/trashnet        |
-| 2 | SENet     | https://github.com/hujie-frank/SENet         |
-| 3 | CBAM      | https://github.com/Jongchan/attention-module |
+| # | Reference      |                    Link                      |
+|---|----------------|----------------------------------------------|
+| 1 | TrashNet       | https://github.com/garythung/trashnet        |
+| 2 | SENet          | https://github.com/hujie-frank/SENet         |
+| 3 | CBAM           | https://github.com/Jongchan/attention-module |
+| 4 | Albumentations | https://github.com/albu/albumentations       |
 
 Acknowledgement
 ---------------
