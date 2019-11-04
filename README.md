@@ -42,9 +42,9 @@ Data Augmentation(Albumentations[4])
 ```
 $ python augmentation.py --root_dir $ROOT --save_dir $SAVE --probability $PROB
 ```
-$ROOT: 'dataset-resized/' (default)  
-$SAVE: 'augmented/' (default)  
-$PROB: low(default), mid, high (probability of applying the transform)  
+**$ROOT**: 'dataset-resized/' (default)  
+**$SAVE**: 'augmented/' (default)  
+**$PROB**: low(default), mid, high (probability of applying the transform)  
 
 Training
 ---------
@@ -73,13 +73,8 @@ Evaluation
 ```
 $ python main.py --gpu $GPUNUM --resume save/model_best.pth.tar --use_att -e
 ```
-<<<<<<< HEAD
-$resume: 'save/model_best.pth.tar' (default) (If you have changed save path, you should change resume path as well.)
-$e (or evaluate): set evaluation mode
-=======
 **$resume**: save/model_best.pth.tar(default) (If you have changed save path, you should change resume path as well.)  
 **$e** (or evaluate): set evaluation mode
->>>>>>> a2a254a54f644cec6b00e191c6d42ccef2eca6c0
 
 Webcam Inference
 ----------------
